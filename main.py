@@ -28,4 +28,45 @@
 # Saraksti - https://www.w3schools.com/python/python_lists.asp
 # Vārdnīcas - https://www.w3schools.com/python/python_dictionaries.asp
 # Klonēt repozitoriju - hhttps://code.visualstudio.com/docs/sourcecontrol/intro-to-git
-#
+expenses = []
+
+import json
+
+f = open('expenses.json',)
+expenses = json.load(f)
+f.close()
+
+while True:
+    command = input("\nChoose command:")
+#with if you can choose command
+    if command == "1":
+        expenses_sum= {}
+        expenses_sum["name"]=input("Preci:") 
+        expenses_sum["sum"]=int(input("Summa :"))
+        expenses_sum["%"]=int(input("-%:"))
+        expenses.append(expenses_sum)
+        newlist = [x for x in expenses if x["sum"]>int(2)] or [x for x in expenses if x["sum"]<int(9999)]
+        print(newlist)     
+        pass
+    #with if you can choose command
+    if command == "2":
+        id = int(input("Enter the index of the preci to remove: "))
+        expenses.pop(id)
+        print(expenses)  
+    #with if you can choose command 
+    if command == "3":
+        print('expenses del')
+        del(expenses)
+    #with if you can choose command
+    if command == "4":
+        print("Čeku:", expenses)
+        with open("expenses.json", "w") as outfile:
+            json.dump(expenses, outfile)
+        break
+
+
+
+
+
+
+
